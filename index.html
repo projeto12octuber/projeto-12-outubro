@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Projeto 12 de Outubro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fonte divertida -->
+  <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Ícones -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Londrina Solid", cursive;
+      background: #1e1e2e;
+      text-align: center;
+      overflow-x: hidden;
+      color: #f5f5f5;
+      position: relative;
+    }
+
+    header {
+      padding: 30px 10px;
+      background: linear-gradient(90deg, #6a5acd, #8a2be2, #483d8b);
+      color: #fff;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      margin: 10px 0 0;
+    }
+
+    /* Carrossel */
+    .carousel {
+      margin: 30px auto;
+      max-width: 90%;
+      position: relative;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: auto;
+      max-height: 380px;
+      object-fit: contain;
+      background: #111;
+      border-radius: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      display: none;
+    }
+
+    .carousel img.active {
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Cards */
+    .card {
+      max-width: 850px;
+      margin: 20px auto;
+      padding: 25px;
+      background: #2a2a40;
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      position: relative;
+      z-index: 2;
+    }
+
+    h2 {
+      color: #ffcc70;
+      font-size: 2rem;
+    }
+
+    .ajuda {
+      background: #333354;
+    }
+
+    .ajuda ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1.1rem;
+    }
+
+    .ajuda li {
+      margin: 12px 0;
+    }
+
+    /* Botões */
+    .btn {
+      margin-top: 8px;
+      background: #f76c5e;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      background: #d94a40;
+      transform: scale(1.05);
+    }
+
+    .pix {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #ffcc70;
+      display: none;
+    }
+
+    footer {
+      margin: 0;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #ddd;
+      background: #111122;
+    }
+
+    /* Balões */
+    .balao {
+      position: absolute;
+      bottom: -120px;
+      width: 45px;
+      height: 65px;
+      border-radius: 50% 50% 45% 45%;
+      animation: subir 12s linear infinite;
+      opacity: 0.85;
+      z-index: 1;
+    }
+
+    .balao::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 10px solid currentColor;
+    }
+
+    .fio {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      width: 2px;
+      height: 40px;
+      background: #fff;
+      transform: translateX(-50%);
+      opacity: 0.6;
+    }
+
+    @keyframes subir {
+      0% { transform: translateY(0) scale(1);}
+      100% { transform: translateY(-120vh) scale(1.2);}
+    }
+
+    /* Estrelinhas */
+    .estrela {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: brilhar 2s infinite alternate;
+    }
+
+    @keyframes brilhar {
+      from { opacity: 0.3; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      .card {
+        padding: 15px;
+        margin: 15px;
+      }
+      .btn {
+        font-size: 1.1rem;
+        padding: 12px 20px;
+      }
+      .carousel img {
+        max-height: 280px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+      .btn {
+        width: 90%;
+        justify-content: center;
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎈 Projeto 12 de Outubro 🎉</h1>
+    <p>Festa do Dia das Crianças ✨</p>
+  </header>
+
+  <!-- Carrossel -->
+  <div class="carousel">
+    <img src="foto1.jpg" alt="Foto 1" class="active">
+    <img src="foto2.jpg" alt="Foto 2">
+    <img src="foto3.jpg" alt="Foto 3">
+    <img src="foto4.jpg" alt="Foto 4">
+    <img src="foto5.jpg" alt="Foto 5">
+    <img src="foto6.jpg" alt="Foto 6">
+    <img src="foto7.jpg" alt="Foto 7">
+    <img src="foto8.jpg" alt="Foto 8">
+    <img src="foto9.jpg" alt="Foto 9">
+    <img src="foto10.jpg" alt="Foto 10">
+    <img src="foto11.jpg" alt="Foto 11">
+    <img src="foto12.jpg" alt="Foto 12">
+    <img src="foto13.jpg" alt="Foto 13">
+    <img src="foto14.jpg" alt="Foto 14">
+    <img src="foto15.jpg" alt="Foto 15">
+    <img src="foto16.jpg" alt="Foto 16">
+    <img src="foto17.jpg" alt="Foto 17">
+    <img src="foto18.jpg" alt="Foto 18">
+    <img src="foto19.jpg" alt="Foto 19">
+    <img src="foto20.jpg" alt="Foto 20">
+    <img src="foto21.jpg" alt="Foto 21">
+  </div>
+
+  <!-- Sobre -->
+  <section class="card">
+    <h2>Sobre o evento</h2>
+    <p>
+      O Projeto 12 de Outubro é uma festa feita com muito carinho para as crianças
+      da nossa comunidade. Teremos brincadeiras, música, comidas, apresentações,
+      e muita diversão. 🥳 <br>
+      Nossa missão é proporcionar um dia inesquecível e cheio de sorrisos!
+    </p>
+  </section>
+
+  <!-- Como ajudar -->
+  <section class="card ajuda">
+    <h2>Como você pode ajudar?</h2>
+    <ul>
+      <li>
+        <a href="https://wa.me/5527996350778?text=Olá!%20Gostaria%20de%20doar%20brinquedos%20para%20o%20Projeto%2012%20de%20Outubro." 
+           class="btn"><i class="ri-gamepad-line"></i> Doar brinquedos</a>
+      </li>
+      <li>
+        <a href="https://wa.me/5527996350778?text=Olá!%20Gostaria%20de%20doar%20refrigerantes%20para%20o%20Projeto%2012%20de%20Outubro." 
+           class="btn"><i class="ri-cup-line"></i> Doar refrigerantes</a>
+      </li>
+      <li>
+        <a href="https://wa.me/5527996350778?text=Olá!%20Gostaria%20de%20doar%20comida%20ou%20ingredientes%20para%20o%20Projeto%2012%20de%20Outubro." 
+           class="btn"><i class="ri-restaurant-2-line"></i> Doar comida</a>
+      </li>
+      <li>
+        <a href="https://wa.me/5527996350778?text=Olá!%20Gostaria%20de%20doar%20doces%20para%20o%20Projeto%2012%20de%20Outubro." 
+           class="btn"><i class="ri-cake-2-line"></i> Doar doces</a>
+      </li>
+      <li>
+        <button class="btn" onclick="mostrarPix()"><i class="ri-money-dollar-circle-line"></i> Ver chave Pix</button>
+      </li>
+    </ul>
+    <p class="pix" id="pix">📌 Chave Pix: <b>129.357.417-14</b></p>
+  </section>
+
+  <!-- Compartilhar -->
+  <section class="card ajuda">
+    <h2>📲 Compartilhe o projeto!</h2>
+    <a href="https://wa.me/?text=Participe%20do%20Projeto%2012%20de%20Outubro!%20Uma%20festa%20linda%20para%20as%20crianças.%20Ajude%20com%20doações%20ou%20divulgação!%20Contate:%20+55%2027%2099635-0778" 
+       class="btn"><i class="ri-whatsapp-line"></i> Compartilhar no WhatsApp</a>
+  </section>
+
+  <footer>
+    Feito com ❤ para nossas crianças | Projeto 12 de Outubro
+  </footer>
+
+  <script>
+    // Carrossel
+    let index = 0;
+    const imagens = document.querySelectorAll(".carousel img");
+
+    function trocarImagem() {
+      imagens[index].classList.remove("active");
+      index = (index + 1) % imagens.length;
+      imagens[index].classList.add("active");
+    }
+    setInterval(trocarImagem, 3500);
+
+    // Mostrar Pix
+    function mostrarPix() {
+      const pix = document.getElementById("pix");
+      pix.style.display = pix.style.display === "block" ? "none" : "block";
+    }
+
+    // Balões animados
+    for (let i = 0; i < 10; i++) {
+      const balao = document.createElement("div");
+      balao.classList.add("balao");
+      balao.style.left = Math.random() * 100 + "vw";
+      balao.style.background = ["#ff6b6b", "#ffcc66", "#66ccff", "#66ff99", "#b266ff"][Math.floor(Math.random()*5)];
+      balao.style.color = balao.style.background; // cor do "bico"
+      balao.style.animationDuration = 8 + Math.random()*6 + "s";
+
+      const fio = document.createElement("div");
+      fio.classList.add("fio");
+      balao.appendChild(fio);
+
+      document.body.appendChild(balao);
+    }
+
+    // Estrelas piscando
+    for (let i = 0; i < 25; i++) {
+      const estrela = document.createElement("div");
+      estrela.classList.add("estrela");
+      estrela.style.top = Math.random() * 100 + "vh";
+      estrela.style.left = Math.random() * 100 + "vw";
+      estrela.style.animationDuration = (1 + Math.random()*2) + "s";
+      document.body.appendChild(estrela);
+    }
+  </script>
+</body>
+</html>
